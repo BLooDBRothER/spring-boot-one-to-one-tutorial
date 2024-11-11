@@ -1,0 +1,17 @@
+services:
+  postgres-db:
+    container_name: user_management_psql
+    image: postgres:16.4-alpine
+    restart: always
+    environment:
+      POSTGRES_DB: user_management_db
+      POSTGRES_USER: sampledbuser
+      POSTGRES_PASSWORD: sampledbpass
+      POSTGRES_HOST_AUTH_METHOD: password
+    ports:
+      - "5433:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+volumes:
+  pg_data:
