@@ -3,8 +3,8 @@ spring:
     name: user_management
   datasource:
     url: jdbc:postgresql://localhost:5433/user_management_db
-    username: <user>
-    password: <pwd>
+    username: sampledbuser
+    password: sampledbpass
     driver-class-name: org.postgresql.Driver
   flyway:
     schemas: usermanagement
@@ -14,3 +14,6 @@ spring:
       hibernate:
         format_sql: true
     show-sql: true
+
+server:
+  port: 8081

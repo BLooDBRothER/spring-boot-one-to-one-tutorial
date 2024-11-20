@@ -5,6 +5,7 @@ import org.example.user_management.dto.UserResponseDto;
 import org.example.user_management.dto.UserResponseWithDetailsDto;
 import org.example.user_management.model.User;
 import org.example.user_management.model.UserDetails;
+import org.example.user_management.model.UserRole;
 import org.example.user_management.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
@@ -25,9 +26,12 @@ public class UserService {
             return null;
         }
 
+        log.info("Fetching User Role");
+        UserRole userRole = user.getRole().getUserRole();
+
         UserResponseDto build = UserResponseDto.builder()
                 .username(user.getFirstName() + " " + user.getLastName())
-                .userRole(user.getRole().getUserRole())
+                .userRole(userRole)
                 .build();
         log.info("response {} ", build);
         return build;
